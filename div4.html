@@ -1,0 +1,63 @@
+<html>
+  <head>
+    <title>Instascan &ndash; Demo</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="qr/style.css">
+    <script type="text/javascript" src="qr/adapter.min.js"></script>
+    <script type="text/javascript" src="qr/vue.min.js"></script>
+    <script type="text/javascript" src="qr/instascan.min.js"></script>
+    <script type="text/javascript">
+      function botonPresionado() {
+        //En el momento que se presiona el boton, se le da el valor obtenido por la camara al form "nuevaSolicitud"
+        var x = document.getElementById("cod").innerText;
+        document.getElementById("codigoid").setAttribute('value',x);
+        document.getElementById("nuevaSolicitud").submit();
+      }
+    </script>
+  </head>
+  <body>
+    <div id="app">
+      <div class="sidebar">
+        <section class="cameras">
+          <h2>Cámaras</h2>
+          <ul>
+            <li v-if="cameras.length === 0" class="empty">No se encontraron camaras</li>
+            <li v-for="camera in cameras">
+              <span v-if="camera.id == activeCameraId" :title="formatName(camera.name)" class="active">{{ formatName(camera.name) }}</span>
+              <span v-if="camera.id != activeCameraId" :title="formatName(camera.name)">
+                <a @click.stop="selectCamera(camera)">{{ formatName(camera.name) }}</a>
+              </span>
+            </li>
+          </ul>
+        </section>
+        <!-- Form para enviar el codigo obtenido a solicitudes.php -->
+        <form id="nuevaSolicitud" action="solicitudes.php" method="post">
+          <input type="hidden" id="codigoid" name="codigoid" value="">
+          <input type="hidden" name="accion" value="2">
+        </form>
+        <section class="scans">
+          <h2>Lecturas</h2>
+          <ul v-if="scans.length === 0">
+            <li class="empty">Escaneando</li>
+          </ul>
+          <transition-group name="scans" tag="ul">
+            <li class="list-group-item" style="padding:0px;margin:1px;" v-for="scan in scans" :key="scan.date" :title="scan.content">
+              <center>
+                <p hidden id="cod">{{ scan.content }}</p>
+                {{ scan.content }}
+                <br><button style="margin-bottom:2px;" type="button" class="btn btn-xs btn-success" onclick="botonPresionado()">Agregar</button>
+              </center>
+            </li>
+          </transition-group>
+        </section>
+
+      </div>
+      <div class="preview-container">
+        <center>
+          <video style="width:75%; padding:0px; margin:0px;" id="preview"></video>
+        </center>
+      </div>
+    </div>
+    <script type="text/javascript" src="qr/app.js"></script>
+  </body>
+</html>

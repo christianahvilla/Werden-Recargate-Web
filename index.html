@@ -48,6 +48,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.teal-red.min.css">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
   </head>
   <body>
     <div class="demo-layout mdl-layout mdl-layout--fixed-header mdl-js-layout mdl-color--grey-100">
@@ -63,15 +65,32 @@
           <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
           <div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
             <div class="demo-crumbs mdl-color-text--grey-500">
-              Coloca el codigo QR frente a la camara
+              <h5>Coloca el codigo QR frente a la camara</h5>
             </div>
-          </div>
-        </div>
-        <div class="demo-container mdl-grid">
-          <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
-          <div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
-            <div class="demo-crumbs mdl-color-text--grey-500">
-              Coloca el codigo QR frente a la camara
+            <div id="app">
+              <div class="preview-container">
+                <center>
+                  <video style="width:75%; padding:0px; margin:0px;" id="preview"></video>
+                </center>
+                <div class="demo-crumbs mdl-color-text--grey-500">
+                  <h5>Lectura</h5>
+                </div>
+                <section class="scans">
+                  <transition-group name="scans" tag="ul">                    
+                    <div class="list-group-item" style="padding:0px;margin:1px;" v-for="scan in scans" :key="scan.date" :title="scan.content">
+                      <p hidden id="myInput">{{ JSON.parse(scan.content).number}}</p>
+                      <b>{{ JSON.parse(scan.content).name}} {{JSON.parse(scan.content).last}}</b>
+                      <p>{{ JSON.parse(scan.content).number}} {{JSON.parse(scan.content).carrier}}</p>
+                      <div class="tooltip">
+                          <button class="copy-button" onclick="copyClipBoard()" onmouseout="outFunc()">
+                            <span class="tooltiptext" id="myTooltip">Copiar</span>
+                            Copiar numero
+                            </button>
+                          </div>
+                    </div>
+                  </transition-group>
+                </section>
+              </div>
             </div>
           </div>
         </div>
@@ -84,6 +103,11 @@
         </footer>
       </main>
     </div>
+    <script type="text/javascript" src="qr/adapter.min.js"></script>
+    <script type="text/javascript" src="qr/vue.min.js"></script>
+    <script type="text/javascript" src="qr/instascan.min.js"></script>
     <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script src="script.js"></script>
+    <script type="text/javascript" src="qr/app.js"></script>
   </body>
 </html>
