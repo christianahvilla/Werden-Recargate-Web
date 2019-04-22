@@ -3,7 +3,7 @@ function copyClipBoard() {
     var copyText = document.getElementById("myInput");
 
     /* Copy the text inside the text field */
-    document.execCommand("copy");
+    navigator.clipboard.writeText(copyText.textContent);
     /* Alert the copied text */
-    alert("Copied the text: " + copyText.textContent);
+    alert("Numero " + copyText.textContent);
 }

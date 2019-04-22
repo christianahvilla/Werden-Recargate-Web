@@ -77,16 +77,20 @@
                 </div>
                 <section class="scans">
                   <transition-group name="scans" tag="ul">                    
-                    <div class="list-group-item" style="padding:0px;margin:1px;" v-for="scan in scans" :key="scan.date" :title="scan.content">
+                    <div class="list-group-item" style="padding:0px;margin:1px;" v-for="(scan, index) in scans" :key="scan.date" :title="scan.content">
                       <p hidden id="myInput">{{ JSON.parse(scan.content).number}}</p>
-                      <b>{{ JSON.parse(scan.content).name}} {{JSON.parse(scan.content).last}}</b>
-                      <p>{{ JSON.parse(scan.content).number}} {{JSON.parse(scan.content).carrier}}</p>
-                      <div class="tooltip">
-                          <button class="copy-button" onclick="copyClipBoard()" onmouseout="outFunc()">
-                            <span class="tooltiptext" id="myTooltip">Copiar</span>
-                            Copiar numero
-                            </button>
-                          </div>
+                      <div class="card">
+                        <div id="div-h6">
+                          <h5>{{scans.length - index}}</h6>
+                          <h6>
+                            <b>{{ JSON.parse(scan.content).name}} {{JSON.parse(scan.content).last}}</b>
+                            <p>{{ JSON.parse(scan.content).number}} {{JSON.parse(scan.content).carrier}}</p>
+                          </h6>
+                        </div>
+                        <div id="button-div">
+                          <button class="copy-button" onclick="copyClipBoard()">Copiar numero</button>
+                        </div>
+                      </div>
                     </div>
                   </transition-group>
                 </section>
@@ -94,13 +98,6 @@
             </div>
           </div>
         </div>
-        <footer class="demo-footer mdl-mini-footer">
-          <div class="mdl-mini-footer--left-section">
-            <ul class="mdl-mini-footer--link-list">
-              <li><a href="#">Terminos y Condiciones</a></li>
-            </ul>
-          </div>
-        </footer>
       </main>
     </div>
     <script type="text/javascript" src="qr/adapter.min.js"></script>
