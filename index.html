@@ -62,38 +62,37 @@
       <div class="demo-ribbon"></div>
       <main class="demo-main mdl-layout__content">
         <div class="demo-container mdl-grid">
-          <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
           <div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
-            <div class="demo-crumbs mdl-color-text--grey-500">
-              <h5>Coloca el codigo QR frente a la camara</h5>
-            </div>
             <div id="app">
               <div class="preview-container">
-                <center>
-                  <video style="width:75%; padding:0px; margin:0px;" id="preview"></video>
-                </center>
-                <div class="demo-crumbs mdl-color-text--grey-500">
-                  <h5>Lectura</h5>
-                </div>
-                <section class="scans">
-                  <transition-group name="scans" tag="ul">
-                      <p hidden id="myInput">{{ JSON.parse(scan.content).number}}</p>
-                      <div class="card">
-                        <div id="div-h6">
-                          <h5>{{scans.length - index}}</h6>
-                          <h6>
-                            <b>{{ JSON.parse(scan.content).name}} {{JSON.parse(scan.content).last}}</b>
-                            <p>{{ JSON.parse(scan.content).number}} {{JSON.parse(scan.content).carrier}}</p>
-                          </h6>
-                        </div>
-                        <div id="button-div">
-                          <button class="copy-button" onclick="copyClipBoard()">Copiar numero</button>
-                          <button :id = "JSON.parse(scan.content).number" class="copy-button" onclick="copyClipBoard()">Copiar numero</button>
-                        </div>
-                      </div>
+                  <div class="demo-crumbs mdl-color-text--grey-500">
+                    <h5>Coloca el codigo QR frente a la camara</h5>
+                  </div>
+                  <video style="width:100%; padding:0px; margin:0px;" id="preview"></video>
+              </div>
+              <div id="div-card">
+                  <div class="demo-crumbs mdl-color-text--grey-500">
+                      <h5>Lectura</h5>
                     </div>
-                  </transition-group>
-                </section>
+                    <section class="scans">
+                      <transition-group name="scans" tag="ul">
+                        <div class="list-group-item" style="padding:0px;margin:1px;" v-for="(scan, index) in scans" :key="scan.date" :title="scan.content">
+                          <p hidden id="myInput">{{ JSON.parse(scan.content).number}}</p>
+                          <div class="card">
+                            <div id="div-h6">
+                              <h5>{{scans.length - index}}</h6>
+                              <h6>
+                                <b>{{ JSON.parse(scan.content).name}} {{JSON.parse(scan.content).last}}</b>
+                                <p>{{ JSON.parse(scan.content).number}} {{JSON.parse(scan.content).carrier}}</p>
+                              </h6>
+                            </div>
+                            <div id="button-div">
+                              <button :id = "JSON.parse(scan.content).number" class="copy-button" onclick="copyClipBoard()">Copiar numero</button>
+                            </div>
+                          </div>
+                        </div>
+                      </transition-group>
+                    </section>
               </div>
             </div>
           </div>
