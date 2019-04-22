@@ -77,7 +77,7 @@
                 </div>
                 <section class="scans">
                   <transition-group name="scans" tag="ul">                    
-                    <div class="list-group-item" style="padding:0px;margin:1px;" v-for="(scan, index) in scans" :key="scan.date" :title="scan.content">
+                  <transition-group name="scans" tag="ul">
                       <p hidden id="myInput">{{ JSON.parse(scan.content).number}}</p>
                       <div class="card">
                         <div id="div-h6">
@@ -89,6 +89,7 @@
                         </div>
                         <div id="button-div">
                           <button class="copy-button" onclick="copyClipBoard()">Copiar numero</button>
+                          <button :id = "JSON.parse(scan.content).number" class="copy-button" onclick="copyClipBoard()">Copiar numero</button>
                         </div>
                       </div>
                     </div>
