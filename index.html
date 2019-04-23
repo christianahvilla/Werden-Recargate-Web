@@ -80,11 +80,12 @@
                           <p hidden id="myInput">{{ JSON.parse(scan.content).number}}</p>
                           <div class="card">
                             <div id="div-h6">
-                              <h5>{{scans.length - index}}</h6>
                               <h6>
                                 <b>{{ JSON.parse(scan.content).name}} {{JSON.parse(scan.content).last}}</b>
-                                <p>{{ JSON.parse(scan.content).number}} {{JSON.parse(scan.content).carrier}}</p>
                               </h6>
+                              <h5>
+                                <p>{{ JSON.parse(scan.content).number}} {{JSON.parse(scan.content).carrier}}</p>
+                              </h5>
                             </div>
                             <div id="button-div">
                               <button :id = "JSON.parse(scan.content).number" class="copy-button" onclick="copyClipBoard()">Copiar numero</button>

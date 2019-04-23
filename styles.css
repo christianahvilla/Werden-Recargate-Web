@@ -123,6 +123,7 @@ header{
 .demo-content {
   border-radius: 2px;
   padding: 80px 56px;
+  padding-top: 10px;
   margin-bottom: 80px;
   width: 100%!important;
 }
