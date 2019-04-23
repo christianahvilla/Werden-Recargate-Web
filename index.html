@@ -87,7 +87,7 @@
                               </h5>
                             </div>
                             <div id="button-div">
-                              <button :id = "JSON.parse(scan.content).number" class="copy-button" onclick="copyClipBoard(this.id)">Copiar numero</button>
+                              <button :id = "JSON.parse(scan.content).number + index" :value="JSON.parse(scan.content).number" class="copy-button" onclick="copyClipBoard(this.id)">Copiar numero</button>
                             </div>
                           </div>
                         </div>

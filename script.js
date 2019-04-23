@@ -9,5 +9,5 @@ function copyClipBoard(id) {
     button.className = 'copy-button-clicked';
 
     /* Copy the text inside the text field */
-    navigator.clipboard.writeText(id);
+    navigator.clipboard.writeText(button.value);
 }
