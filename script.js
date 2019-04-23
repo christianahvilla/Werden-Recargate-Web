@@ -1,14 +1,13 @@
-function copyClipBoard() {
+
+
+function copyClipBoard(id) {
 
     /* Get the text field */
-    var copyText = document.getElementById("myInput");
 
-    var button = document.getElementById(copyText.textContent);
+    var button = document.getElementById(id);
 
     button.className = 'copy-button-clicked';
 
     /* Copy the text inside the text field */
-    navigator.clipboard.writeText(copyText.textContent);
-    /* Alert the copied text */
-    alert("Numero " + copyText.textContent);
+    navigator.clipboard.writeText(id);
 }

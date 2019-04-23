@@ -77,7 +77,6 @@
                     <section class="scans">
                       <transition-group name="scans" tag="ul">
                         <div class="list-group-item" style="padding:0px;margin:1px;" v-for="(scan, index) in scans" :key="scan.date" :title="scan.content">
-                          <p hidden id="myInput">{{ JSON.parse(scan.content).number}}</p>
                           <div class="card">
                             <div id="div-h6">
                               <h6>
@@ -88,7 +87,7 @@
                               </h5>
                             </div>
                             <div id="button-div">
-                              <button :id = "JSON.parse(scan.content).number" class="copy-button" onclick="copyClipBoard()">Copiar numero</button>
+                              <button :id = "JSON.parse(scan.content).number" class="copy-button" onclick="copyClipBoard(this.id)">Copiar numero</button>
                             </div>
                           </div>
                         </div>
@@ -104,6 +103,7 @@
     <script type="text/javascript" src="qr/vue.min.js"></script>
     <script type="text/javascript" src="qr/instascan.min.js"></script>
     <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
     <script src="script.js"></script>
     <script type="text/javascript" src="qr/app.js"></script>
   </body>
