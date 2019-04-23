@@ -71,28 +71,28 @@
                   <video style="width:100%; padding:0px; margin:0px;" id="preview"></video>
               </div>
               <div id="div-card">
-                  <div class="demo-crumbs mdl-color-text--grey-500">
-                      <h5>Lectura</h5>
-                    </div>
-                    <section class="scans">
-                      <transition-group name="scans" tag="ul">
-                        <div class="list-group-item" style="padding:0px;margin:1px;" v-for="(scan, index) in scans" :key="scan.date" :title="scan.content">
-                          <div class="card">
-                            <div id="div-h6">
-                              <h6>
-                                <b>{{ JSON.parse(scan.content).name}} {{JSON.parse(scan.content).last}}</b>
-                              </h6>
-                              <h5>
-                                <p>{{ JSON.parse(scan.content).number}} {{JSON.parse(scan.content).carrier}}</p>
-                              </h5>
-                            </div>
-                            <div id="button-div">
-                              <button :id = "JSON.parse(scan.content).number + index" :value="JSON.parse(scan.content).number" class="copy-button" onclick="copyClipBoard(this.id)">Copiar numero</button>
-                            </div>
-                          </div>
+                <div class="demo-crumbs mdl-color-text--grey-500">
+                  <h5>Lectura</h5>
+                </div>
+                <section class="scans">
+                  <transition-group name="scans" tag="ul">
+                    <div class="list-group-item" style="padding:0px;margin:1px;" v-for="(scan, index) in scans" :key="scan.date" :title="scan.content">
+                      <div class="card">
+                        <div id="div-h6">
+                          <h6>
+                            <b>{{ JSON.parse(scan.content).name}} {{JSON.parse(scan.content).last}}</b>
+                          </h6>
+                          <h5>
+                            <p>{{ JSON.parse(scan.content).number}} {{JSON.parse(scan.content).carrier}}</p>
+                          </h5>
                         </div>
-                      </transition-group>
-                    </section>
+                        <div id="button-div">
+                          <button :id = "JSON.parse(scan.content).number + index" :value="JSON.parse(scan.content).number" class="copy-button" onclick="copyClipBoard(this.id)">Copiar numero</button>
+                        </div>
+                      </div>
+                    </div>
+                  </transition-group>
+                </section>
               </div>
             </div>
           </div>
