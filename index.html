@@ -82,9 +82,9 @@
                           <h6>
                             <b>{{ JSON.parse(scan.content).name}} {{JSON.parse(scan.content).last}}</b>
                           </h6>
-                          <h5>
+                          <h3>
                             <p>{{ JSON.parse(scan.content).number}} {{JSON.parse(scan.content).carrier}}</p>
-                          </h5>
+                          </h3>
                         </div>
                         <div id="button-div">
                           <button :id = "JSON.parse(scan.content).number + index" :value="JSON.parse(scan.content).number" class="copy-button" onclick="copyClipBoard(this.id)">Copiar numero</button>
